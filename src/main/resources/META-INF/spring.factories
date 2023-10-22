@@ -1,0 +1,2 @@
+org.springframework.boot.env.PropertySourceLoader=\
+com.configserver.configServerName.Yaml2PropertySourceLoader
