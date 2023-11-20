@@ -1,4 +1,2 @@
 org.springframework.boot.context.config.ConfigDataLocationResolver=\
 com.configserver.configServerName.MyAwsSecretsManagerConfigDataLocationResolver
-
-

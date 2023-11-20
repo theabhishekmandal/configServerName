@@ -4,18 +4,19 @@ import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.ResponseMetadata;
 import com.amazonaws.services.secretsmanager.AWSSecretsManager;
 import com.amazonaws.services.secretsmanager.model.*;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import io.awspring.cloud.autoconfigure.secretsmanager.AwsSecretsManagerBootstrapConfiguration;
+import io.awspring.cloud.autoconfigure.secretsmanager.AwsSecretsManagerConfigDataLocationResolver;
+import io.awspring.cloud.secretsmanager.AwsSecretsManagerProperties;
+import org.springframework.boot.BootstrapContext;
+import org.springframework.stereotype.Service;
 
-@Configuration
-public class MyConfiguration {
+@Service
+public class MyAwsSecretsManagerConfigDataLocationResolver extends AwsSecretsManagerConfigDataLocationResolver {
 
-    @Bean("secretManager")
-    public AWSSecretManager secretManager() {
-        return x -> x + "awsSecretValue";
+    protected AWSSecretsManager createAwsSecretsManagerClient(BootstrapContext context) {
+        return get();
     }
 
-    @Bean("abhishek")
     public AWSSecretsManager get() {
         return new AWSSecretsManager() {
             @Override
@@ -139,5 +140,4 @@ public class MyConfiguration {
             }
         };
     }
-
 }

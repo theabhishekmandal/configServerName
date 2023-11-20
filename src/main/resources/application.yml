@@ -9,7 +9,13 @@ spring:
           uri: https://github.com/theabhishekmandal/config-repo.git
           clone-on-start: true
           default-label: main
+  config:
+    import: aws-secretsmanager:test/secretmanager;
 #  security:
 #    user:
 #      name:root
 #      password:secret
+
+aws:
+  secretsmanager:
+    region: helloworld
